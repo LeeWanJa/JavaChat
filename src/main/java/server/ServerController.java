@@ -9,11 +9,8 @@ import static common.Logger.log;
 public class ServerController {
 
     public void startServer(){
-
-
         try(ServerSocket serverSocket = new ServerSocket(8000)){
             log("서버 소켓 생성");
-
 
             while(true){
                 // 클라의 요청 accept() 후 Socket 반환

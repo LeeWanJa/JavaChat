@@ -25,7 +25,7 @@ public class ServerSession implements Runnable{
                 log("클라이언트가 보낸 메세지 : " + received);
 
                 if(received.equals("exit")){
-                    log("클라이언트가 종료로를 요청했습니다.");
+                    log("클라이언트가 종료를 요청했습니다.");
                     break;
                 }
 
