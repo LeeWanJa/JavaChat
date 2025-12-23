@@ -33,7 +33,7 @@ public class ServerSession implements Runnable{
                 dataOutputStream.writeUTF(toSend);
             }
         } catch (IOException e){
-            log("클라이언트 메세지 처리 중 문제 발생! : " + e.getMessage());
+            log("클라이언트와의 연결이 끊겼습니다 : " + e.getMessage());
         }
 
         log("클라이언트와 연결 종료");
