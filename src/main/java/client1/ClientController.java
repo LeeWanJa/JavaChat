@@ -25,10 +25,10 @@ public class ClientController {
                 String toSend = scanner.nextLine();
 
                 output.writeUTF(toSend);
-                log("클라이언트 -> 서버 : " + toSend);
+                log("당신의 메세지 : " + toSend);
 
                 String received = input.readUTF();
-                log("서버 -> 클라이언트 : " + received);
+                System.out.println(received);
             }
 
         } catch(IOException e){

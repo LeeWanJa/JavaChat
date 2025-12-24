@@ -21,7 +21,8 @@ public class ServerSession implements Runnable{
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream())
         ){
             // 채팅 참여자 등록
-            ChatParticipants.from(Thread.currentThread().getName(), socket);
+            String threadName = Thread.currentThread().getName();
+            ChatParticipants.from(threadName, socket);
 
             while(true){
                 String received = dataInputStream.readUTF();
@@ -38,8 +39,9 @@ public class ServerSession implements Runnable{
                     continue;
                 }
 
-                String toSend = "Hello Client!";
-                dataOutputStream.writeUTF(toSend);
+                // 위의 조건을 통과하면 메세지 현재 채팅 참여자 전체에게 전달
+                log("채팅 참여자 전체에게 메세지 송신");
+                ChatParticipants.sendToAll(threadName, received);
             }
         } catch (IOException e){
             log("클라이언트와의 연결이 끊겼습니다 : " + e.getMessage());

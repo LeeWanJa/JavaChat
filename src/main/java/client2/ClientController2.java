@@ -27,10 +27,9 @@ public class ClientController2 {
                 String toSend = scanner.nextLine();
 
                 output.writeUTF(toSend);
-                log("클라이언트 -> 서버 : " + toSend);
 
                 String received = input.readUTF();
-                log("서버 -> 클라이언트 : " + received);
+                System.out.println(received);
             }
 
         } catch(IOException e){
