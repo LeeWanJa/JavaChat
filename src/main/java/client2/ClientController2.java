@@ -1,5 +1,7 @@
 package client2;
 
+import server.ChatParticipants;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

@@ -20,6 +20,9 @@ public class ServerSession implements Runnable{
             DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream())
         ){
+            // 채팅 참여자 등록
+            ChatParticipants.from(Thread.currentThread().getName(), socket);
+
             while(true){
                 String received = dataInputStream.readUTF();
                 log("클라이언트가 보낸 메세지 : " + received);
@@ -27,6 +30,12 @@ public class ServerSession implements Runnable{
                 if(received.equals("exit")){
                     log("클라이언트가 종료를 요청했습니다.");
                     break;
+                }
+
+                if(received.equals("list")){
+                    String toSend = ChatParticipants.getParticipants();
+                    dataOutputStream.writeUTF(toSend);
+                    continue;
                 }
 
                 String toSend = "Hello Client!";
